@@ -1,0 +1,30 @@
+.menu{
+    background-color: black;
+}
+
+
+.menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li img{
+    width: 50px;
+    left: 50px;    
+}
+
+.menu ul li{
+    display: inline-block;    
+}
+
+.menu ul li a{
+    color: white;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.menu ul li a:hover{
+    background-color: #42B881;
+}
