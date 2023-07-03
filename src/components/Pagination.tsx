@@ -20,7 +20,7 @@ function Pagination(props:Props){
         <nav>
             <ul className="pagination">
                 {
-                    props.prev != null ? (
+                    props.prev != "null" ? (
                         <li>
                             <button onClick={handleAnterior}>Anterior</button>
                         </li>
@@ -29,7 +29,7 @@ function Pagination(props:Props){
                     )
                 }
                 {
-                    props.next ? (
+                    props.next != "null" ? (
                         <li>
                             <button onClick={handleSiguiente}>Siguiente</button>
                         </li>
