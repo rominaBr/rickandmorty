@@ -39,7 +39,7 @@ function Ubicacion(){
             {ubicacion ? (
                 <CardUbicacion name={ubicacion.name} type={ubicacion.type} dimension={ubicacion.dimension} created={ubicacion.created} id={ubicacion.id}/>
             ):(
-                <h1>Cargando...</h1>
+                <span className="loader"></span>
             )}
         </div>
     )

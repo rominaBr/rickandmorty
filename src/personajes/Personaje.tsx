@@ -29,7 +29,6 @@ function Personaje(){
             const json = await res.json()
 
             setPersonaje(json)
-            console.log(personaje)
         }
         catch(e){
             console.error(e);
@@ -46,7 +45,7 @@ function Personaje(){
                 </div>
                 
             ) : (
-                <h1>Cargando...</h1>
+                <span className="loader"></span>
             )}
         </div>
     )

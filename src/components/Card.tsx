@@ -7,6 +7,7 @@ type Props = {
     species: string;
     status: string;
     id: number;
+    img: string;
 };
 
 function Card(props: Props){
@@ -17,8 +18,8 @@ function Card(props: Props){
                     <div className='card'>
                         <img src={props.image} alt="artista" />
                         <div className='texto'>
-                            <h4>{props.name}</h4>
-                            <p>{props.status} - {props.species}</p>
+                            <h4>{props.name}</h4>                            
+                            <p>{props.img} {props.status} - {props.species}</p>
                         </div>
                     </div>
                 </Link>

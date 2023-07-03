@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
+import Pagination from "../components/Pagination";
 
 
 type Char = {
@@ -8,47 +9,78 @@ type Char = {
     image: string;
     species: string;
     status: string;
+    img: string;
+};
+
+type Info = {
+    next: string;
+    prev: string;
 }
 
 function Personajes(){
 
     const [personajes, setPersonajes] = useState<Char[]>([]); 
+    const [info, setInfo] = useState<Info>();
+    const URL = "https://rickandmortyapi.com/api/character" 
 
     useEffect(() => {
-        requestPersonajes();
+        requestPersonajes(URL);
     }, []);
 
-    async function requestPersonajes() {
+    async function requestPersonajes(url:string) {
         try{
-            const res = await fetch("https://rickandmortyapi.com/api/character")
+            const res = await fetch(url)
             const json = await res.json()
-
+            setInfo(json.info)
             setPersonajes(json.results)
+                    
         }
         catch(e){
             console.error(e);
         }
     }
 
+    const onAnterior = () => {
+        requestPersonajes(`${info?.prev}`)
+    }
+
+    const onSiguiente = () => {
+        requestPersonajes(`${info?.next}`)
+    }
+    
+
+
     return(
-        <div>
-            {personajes ? (
-                personajes.map((p) => {
-                    return(
-                        <Card
-                            image={p.image}
-                            name={p.name}
-                            species={p.species}
-                            status={p.status}
-                            id={p.id}
-                        ></Card>
-                    )
-                    
-                })
-            ) : (
-                <h1>Cargando...</h1>
-            )}
-        </div>
+        <>
+           
+            <Pagination onAnterior={onAnterior} onSiguiente={onSiguiente} prev={`${info?.prev}`} next={`${info?.next}`}/>
+            <div>
+                {personajes ? (
+                    personajes.map((p) => {
+                        if(p.status == "Dead"){
+                            p.img = "🔴"
+                        } else if(p.status == "Alive"){
+                            p.img = "✔️"
+                        }else {
+                            p.img = "❔"
+                        }                   
+                        return(
+                            <Card
+                                image={p.image}
+                                name={p.name}
+                                img = {p.img}
+                                species={p.species}                            
+                                status={p.status}
+                                id={p.id}
+                            ></Card>
+                        )
+                        
+                    })
+                ) : (
+                    <h1>Cargando...</h1>
+                )}
+            </div>
+        </>
     )
 }
 

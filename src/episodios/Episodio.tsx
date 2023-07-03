@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 type Episode= {
     name: string;
     episode: string;
-    characters: Array<string>;
+    characters: object;
 }
 
 function Episodio(){
@@ -23,6 +23,7 @@ function Episodio(){
             const json = await res.json()
 
             setEpisodio(json)
+            console.log(json.characters)
         }
         catch(e){
             console.error(e);
@@ -38,13 +39,13 @@ function Episodio(){
                         <p>Nombre del Episodio: {episodio.name}</p>
                         <p>Episodio y Temporada: {episodio.episode}</p>
                     </div>
-                    <div>                        
-                              
+                    <div> 
+                        
                     </div>
                 </div>
             ) : (
 
-                <h1>Cargando...</h1>
+                <span className="loader"></span>
 
             )}
         </div>

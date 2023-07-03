@@ -40,7 +40,7 @@ function Ubicaciones(){
                     )                    
                 })
             ): (
-                <h1>Cargando...</h1>
+                <span className="loader"></span>
             )}
         </div>
     )
