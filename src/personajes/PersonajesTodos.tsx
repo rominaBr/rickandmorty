@@ -60,7 +60,7 @@ function Personajes(){
                         if(p.status == "Dead"){
                             p.img = "🔴"
                         } else if(p.status == "Alive"){
-                            p.img = "✔️"
+                            p.img = "🟢"
                         }else {
                             p.img = "❔"
                         }                   
@@ -77,7 +77,7 @@ function Personajes(){
                         
                     })
                 ) : (
-                    <h1>Cargando...</h1>
+                    <span className="loader"></span>
                 )}
             </div>
         </>

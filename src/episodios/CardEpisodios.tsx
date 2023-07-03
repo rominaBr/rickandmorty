@@ -10,6 +10,7 @@ function CardEpisodios(props: Props){
 
     return(
         <>
+            
             <Link to={`/episodios/${props.id}`}>
                 <div className="card">                    
                     <p>{props.name}</p>

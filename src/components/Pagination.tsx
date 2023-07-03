@@ -8,7 +8,7 @@ type Props = {
 
 function Pagination(props:Props){
 
-    const handleAnterior = () =>{
+    const handleAnterior = () =>{        
         props.onAnterior();
     }
 

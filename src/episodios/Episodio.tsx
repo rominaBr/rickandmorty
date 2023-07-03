@@ -23,7 +23,6 @@ function Episodio(){
             const json = await res.json()
 
             setEpisodio(json)
-            console.log(json.characters)
         }
         catch(e){
             console.error(e);
